@@ -106,24 +106,28 @@
   \includegraphics[width=1\textwidth]{images/aneuron.png}
 \end{figure}
 
+\begin{itemize}
+\item 
+\end{itemize}
+
 \end{frame}
 
 
 \begin{frame}{Single layer network}
 
 \begin{columns}[t]
-\column{0.4\textwidth}
+\column{0.5\textwidth}
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=1\textwidth]{images/single_layer.png}
 \end{figure}	
 
-\column{0.6\textwidth}
+\column{0.5\textwidth}
 
 \begin{block}{MaxEnt model}
 \begin{eqnarray*}
-\hat{h}_k &=& \sigma\left(w_{k, 0} + \sum_{i=1}^N w_{k, i} x_i\right) \\
+\hat{h}_k &=& w_{k, 0} + \sum_{i=1}^N w_{k, i} x_i \\
 \hat{p}\left(y = C_k\right) &=& \frac{e^{h_k}}{\sum_{j=1}^K e^{h_j}}
 \end{eqnarray*}
 \end{block}
