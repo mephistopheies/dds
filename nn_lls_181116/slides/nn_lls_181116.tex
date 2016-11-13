@@ -103,12 +103,15 @@
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=1\textwidth]{images/aneuron.png}
+  \includegraphics[width=0.85\textwidth]{images/aneuron.png}
 \end{figure}
 
-\begin{itemize}
-\item 
-\end{itemize}
+\begin{block}{Generalized linear model}
+\begin{eqnarray*}
+\hat{y} &=& g^{-1}\left(w_0 + \sum_{i=1}^N w_i x_i\right)
+\end{eqnarray*}
+\end{block}
+	
 
 \end{frame}
 
@@ -133,6 +136,36 @@
 \end{block}
 	
 \end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Universal approximation theorem}
+
+Let we have:
+\begin{itemize}
+\item $\phi\left(x\right)$ is nonconstant, bounded, and monotonically-increasing continuous function;
+\item $I_m$ is m-dimensional unit hypercube $\left[0, 1\right]^m$
+\item $C\left(I_m\right)$ is space of all continuous functions on $I_m$
+\end{itemize}
+
+then: 
+\begin{itemize}
+\item $\forall f \in C\left(I_m\right) \wedge \forall \epsilon > 0$ 
+\item $\exists N \in \mathbb{N} \wedge v_i, b_i \in \mathbb{R} \wedge w_i \in \mathbb{R}^m, \text{where} i = 1, \ldots, N$
+\end{itemize}
+we can define
+\begin{eqnarray*}
+F\left(x\right) = \sum_{i=1}^N v_i \phi\left(b_i + \sum_{j=1}^m w_{ij} x_j\right)
+\end{eqnarray*}
+such that
+\begin{eqnarray*}
+\forall x \in I_m: \left| F\left(x\right) - f\left(x\right)\right| < \epsilon
+\end{eqnarray*}
+
+\begin{itemize}
+\item \textit{which network topology is produced by this theorem?}
+\end{itemize}
 
 \end{frame}
 
@@ -169,8 +202,12 @@
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=1\textwidth]{images/kernel_convolution.jpg}
+  \includegraphics[width=0.9\textwidth]{images/kernel_convolution.jpg}
 \end{figure}
+
+\begin{itemize}
+\item \url{https://github.com/vdumoulin/conv_arithmetic}
+\end{itemize}
 
 \end{frame}
 
@@ -179,7 +216,7 @@
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=1\textwidth]{images/cnn_explained.png}
+  \includegraphics[width=0.9\textwidth]{images/cnn_explained.png}
 \end{figure}
 
 \begin{itemize}
@@ -239,11 +276,25 @@
 \end{frame}
 
 
-\begin{frame}{Deconvolution}
+\begin{frame}{Opening the black box}
 
-say about blackbox
-introduce deconvolution network
-may be derivative wrt image
+Given a network $F$ with parameters $\Theta$ and input image $x$, lets also define output of each layer as $F_i$:
+\begin{columns}[t]
+\column{0.5\textwidth}
+\begin{block}{Training}
+\begin{eqnarray*}
+\Delta\Theta = -\lambda \frac{\partial F\left(x, \Theta \right)}{\partial \Theta}
+\end{eqnarray*}
+\end{block}
+	
+\column{0.5\textwidth}
+\begin{block}{Understanding}
+\begin{eqnarray*}
+\Delta x = \frac{\partial F_i\left(x, \Theta \right)}{\partial x}
+\end{eqnarray*}
+\end{block}
+	
+\end{columns}
 
 \end{frame}
 
