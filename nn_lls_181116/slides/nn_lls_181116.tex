@@ -43,7 +43,7 @@
 \section{Introduction}
 
 
-\begin{frame}{Classical approach}
+\begin{frame}
 
 \begin{figure}[h!]
   \centering
@@ -53,7 +53,7 @@
 \end{frame}
 
 
-\begin{frame}{Modern approach}
+\begin{frame}
 
 \begin{figure}[h!]
   \centering
@@ -140,28 +140,15 @@
 \end{frame}
 
 
-\begin{frame}{Universal approximation theorem}
+\begin{frame}{Universal approximation theorem, \#1}
 
-Let we have:
-\begin{itemize}
-\item $\phi\left(x\right)$ is nonconstant, bounded, and monotonically-increasing continuous function;
-\item $I_m$ is m-dimensional unit hypercube $\left[0, 1\right]^m$
-\item $C\left(I_m\right)$ is space of all continuous functions on $I_m$
-\end{itemize}
+For any function $f(x)$\footnote{actually not for any, but any function can be decomposed into several "good" ones} we can build $F(x)$, such that it approximates $f(x)$ with any given precision:
 
-then: 
-\begin{itemize}
-\item $\forall f \in C\left(I_m\right) \wedge \forall \epsilon > 0$ 
-\item $\exists N \in \mathbb{N} \wedge v_i, b_i \in \mathbb{R} \wedge w_i \in \mathbb{R}^m, \text{where} i = 1, \ldots, N$
-\end{itemize}
-we can define
 \begin{eqnarray*}
 F\left(x\right) = \sum_{i=1}^N v_i \phi\left(b_i + \sum_{j=1}^m w_{ij} x_j\right)
 \end{eqnarray*}
-such that
-\begin{eqnarray*}
-\forall x \in I_m: \left| F\left(x\right) - f\left(x\right)\right| < \epsilon
-\end{eqnarray*}
+
+where $\phi(x)$ is nonconstant and monotonically-increasing continuous function.
 
 \begin{itemize}
 \item \textit{which network topology is produced by this theorem?}
@@ -170,13 +157,27 @@ such that
 \end{frame}
 
 
-\begin{frame}{Shallow network}
+\begin{frame}{Universal approximation theorem, \#2}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.9\textwidth]{images/uat.png}
+\end{figure}	
+
+\begin{itemize}
+\item \textit{what problem do you see in this theorem?}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Shallow fully connected network}
 
 \begin{figure}[h!]
   \centering
   \includegraphics[width=1\textwidth]{images/mlp.png}
 \end{figure}
-
+ 
 \begin{itemize}
 \item \textit{how many parameters second hidden layer requires?}
 \end{itemize}
@@ -202,11 +203,12 @@ such that
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.9\textwidth]{images/kernel_convolution.jpg}
+  \includegraphics[width=0.8\textwidth]{images/kernel_convolution.jpg}
 \end{figure}
 
 \begin{itemize}
 \item \url{https://github.com/vdumoulin/conv_arithmetic}
+\item \textit{nothing is free, what cost did we pay for such trick?}
 \end{itemize}
 
 \end{frame}
@@ -350,22 +352,13 @@ Given a network $F$ with parameters $\Theta$ and input image $x$, lets also defi
 \end{frame}
 
 
-\begin{frame}{Deep learning = Representation learning}
+\begin{frame}{Search}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=1\textwidth]{images/ife.png}
-\end{figure}
-
-\end{frame}
-
-
-\begin{frame}{Deep representation}
-
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=1\textwidth]{images/mnist.png}
-\end{figure}
+\begin{itemize}
+\item shallow layers catch low-level abstract/texture features (usually it doesn't depend on the datast and on the cost function)
+\item deeper layers catch high-level semantic features (more specific to dataset and to cost function)
+\item \textit{can we use it for image search?}
+\end{itemize}
 
 \end{frame}
 
@@ -470,6 +463,34 @@ Given a network $F$ with parameters $\Theta$ and input image $x$, lets also defi
   \centering
   \includegraphics[width=1\textwidth]{images/search7.png}
 \end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Visualization, \#8}
+
+\begin{itemize}
+\item segmentation
+\item search + segmentation  + style loss
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Feel free to ask questions}
+
+Play with Artisto
+\begin{itemize}
+\item \url{https://play.google.com/store/apps/details?id=com.smaper.artisto}
+\item \url{https://itunes.apple.com/us/app/artisto-video-photo-editor/id1137893020}
+\item \url{https://www.youtube.com/watch?v=VvEqW04vocM}
+\item \url{https://www.youtube.com/watch?v=wOjZDo1NXaA}
+\end{itemize}
+
+Try new Kaggle computer vision competition
+\begin{itemize}
+\item \url{https://www.kaggle.com/c/the-nature-conservancy-fisheries-monitoring}
+\end{itemize}
 
 \end{frame}
 
