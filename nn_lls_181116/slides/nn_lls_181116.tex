@@ -91,10 +91,21 @@
 
 \begin{frame}{Biological neuron}
 
+\begin{columns}[t]
+\column{0.6\textwidth}
+
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=0.6\textwidth]{images/bneuron.jpg}
+  \includegraphics[width=0.95\textwidth]{images/bneuron.jpg}
 \end{figure}
+	
+\column{0.4\textwidth}
+
+\begin{itemize}
+\item \textit{what is common between linear/logistic regression and biological neuron?}
+\end{itemize}
+	
+\end{columns}
 
 \end{frame}
 
@@ -185,7 +196,7 @@ where $\phi(x)$ is nonconstant and monotonically-increasing continuous function.
 \end{frame}
 
 
-\begin{frame}{What next?}
+\begin{frame}
 
 \begin{figure}[h!]
   \centering
@@ -258,7 +269,7 @@ where $\phi(x)$ is nonconstant and monotonically-increasing continuous function.
 \end{frame}
 
 
-\begin{frame}{...}
+\begin{frame}
 
 \begin{figure}[h!]
   \centering
@@ -280,21 +291,25 @@ where $\phi(x)$ is nonconstant and monotonically-increasing continuous function.
 
 \begin{frame}{Opening the black box}
 
-Given a network $F$ with parameters $\Theta$ and input image $x$, lets also define output of each layer as $F_i$:
+Given a network $F$ with parameters $\Theta$, cost function $J$, input image $x$ and its class $c$; lets also define output of each neuron $i$ of layer $j$ as $F_{ij}$:
 \begin{columns}[t]
 \column{0.5\textwidth}
 \begin{block}{Training}
 \begin{eqnarray*}
-\Delta\Theta = -\lambda \frac{\partial F\left(x, \Theta \right)}{\partial \Theta}
+\Delta\Theta = -\lambda \frac{\partial J\left(c, F\left(x, \Theta \right)\right)}{\partial \Theta}
 \end{eqnarray*}
 \end{block}
 	
 \column{0.5\textwidth}
 \begin{block}{Saliency map}
 \begin{eqnarray*}
-\Delta x = \frac{\partial F_i\left(x, \Theta \right)}{\partial x}
+\Delta x = \frac{\partial F_{ij}\left(x, \Theta \right)}{\partial x}
 \end{eqnarray*}
 \end{block}
+
+\begin{itemize}
+\item \textit{what does $\Delta x$ means?}
+\end{itemize}
 	
 \end{columns}
 
@@ -332,7 +347,7 @@ Given a network $F$ with parameters $\Theta$ and input image $x$, lets also defi
 \end{frame}
 
 
-\begin{frame}{Eye filter, \#1}
+\begin{frame}{Iris filter}
 
 \begin{figure}[h!]
   \centering
@@ -342,7 +357,7 @@ Given a network $F$ with parameters $\Theta$ and input image $x$, lets also defi
 \end{frame}
 
 
-\begin{frame}{Eye filter, \#2}
+\begin{frame}{Eye filter}
 
 \begin{figure}[h!]
   \centering
@@ -352,12 +367,22 @@ Given a network $F$ with parameters $\Theta$ and input image $x$, lets also defi
 \end{frame}
 
 
+\begin{frame}{Brain}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=1\textwidth]{images/brain.png}
+\end{figure}
+
+\end{frame}
+
+
 \begin{frame}{Search}
 
 \begin{itemize}
-\item shallow layers catch low-level abstract/texture features (usually it doesn't depend on the datast and on the cost function)
+\item shallow layers catch low-level abstract/texture features (usually it doesn't depend on dataset and on cost function)
 \item deeper layers catch high-level semantic features (more specific to dataset and to cost function)
-\item \textit{can we use it for image search?}
+\item \textit{can we use it for image search, given this knowledge?}
 \end{itemize}
 
 \end{frame}
